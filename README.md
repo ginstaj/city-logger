@@ -1,12 +1,9 @@
-# City Travel Logger Entertainment System
-Built with Python and tkinter gui creating thing. 
-I am a programming n00b
+# Site 2 Site Tracking Test
 
-Features
--Log trips between 4 Colorado cities 
--Calculates distance behind the scenes
--Exports your travel as a log in a timestamped .txt file
--You can switch between NES and SNES inspired mode 
+Forked from city-logger by ginstaj
+Still dont know what I'm doing but figuring it out!
+
+Collab w/ ginstaj
 
 Requires Python
 
