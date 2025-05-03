@@ -19,7 +19,7 @@ skins = {
   }
 }
 
-city_names = ['Aspen', 'Boulder', 'Colorado Springs', 'Denver']
+city_names = ['Aspen', 'Boulder', 'Colorado Springs', 'Denver', 'GCE', 'SKY']
 
 
 #this is going to be hidden but visible in text file
