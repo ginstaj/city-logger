@@ -19,19 +19,24 @@ skins = {
   }
 }
 
-city_names = ['Aspen', 'Boulder', 'Colorado Springs', 'Denver', 'GCE', 'SKY']
-
+Site = ['ADM', 'TECH', 'ZEB', 'BME', 'CAN/JH', 'CME', 'GCE', 'HS', 'PVE', 'SKY']
 
 #this is going to be hidden but visible in text file
 distances = {
-    ('Aspen', 'Boulder'): 210,
-    ('Aspen', 'Colorado Springs'): 265,
-    ('Aspen', 'Denver'): 198,
-    ('Boulder', 'Colorado Springs'): 103,
-    ('Boulder', 'Denver'): 30,
-    ('Colorado Springs', 'Denver'): 69,
+    ('GCE', 'ADM'): 2,
+    ('GCE', 'TECH'): 3,
+    ('GCE', 'ZEB'): 2,
+#NEED TO ADJUST FOR FLOAT( DECIMALS 2.5
+    ('GCE', 'BME'): 2,
+    ('GCE', 'CAN/JH'): 1,
+    ('GCE', 'CME'): 7,
+    ('GCE', 'HS'): 1,
+    ('GCE', 'PVE'): 7,
+    ('GCE', 'SKY'): 1,
+
 }
 # Reverse the permutations (Myko look at this math, ensures you only need to enter school list once ie "one axis of the train timetable")
+# Works! - Myko
 for (a, b), d in list(distances.items()):
     distances[(b, a)] = d
 
@@ -47,7 +52,7 @@ class CityLogger:
         self.city_buttons = [] #Create list to store city buttons
 
         # Creates city buttons 
-        for city in city_names:
+        for city in Site:
             btn = tk.Button(master, text=city, width=20,
                             command=lambda c=city: self.city_click(c))
             btn.pack(pady=5)
