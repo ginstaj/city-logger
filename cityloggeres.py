@@ -26,7 +26,7 @@ distances = {
     ('GCE', 'ADM'): 2,
     ('GCE', 'TECH'): 3,
     ('GCE', 'ZEB'): 2,
-#NEED TO ADJUST FOR FLOAT( DECIMALS 2.5
+#How to implement decimal GCE > BME = 2.5 - float(?
     ('GCE', 'BME'): 2,
     ('GCE', 'CAN/JH'): 1,
     ('GCE', 'CME'): 7,
@@ -40,10 +40,10 @@ distances = {
 for (a, b), d in list(distances.items()):
     distances[(b, a)] = d
 
-class CityLogger:
+class SiteTracking:
     def __init__(self, master): 
         self.master = master
-        self.master.title("City Travel Logger Entertainment System")
+        self.master.title("Site 2 Site Tracking - Test")
 
         self.log = []
         self.is_logging = False
@@ -115,11 +115,11 @@ class CityLogger:
             for entry in self.log:
                 f.write(f"{entry}\n")
             f.write(f"\nTotal miles traveled: {self.total_miles} mi\n")
-        self.log_message(f"Your CityLog has been saved to {filename}")
+        self.log_message(f"Your Mileage has been saved to {filename}")
     
     def city_click(self, key):
         if not self.is_logging:
-            self.log_message("Click Start to begin your CityLog")
+            self.log_message("Click Start to begin tracking.")
             return
         
         if self.last_city is None:
@@ -139,7 +139,7 @@ class CityLogger:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = CityLogger(root)
+    app = SiteTracking(root)
     root.mainloop()
 
             
