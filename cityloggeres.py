@@ -19,26 +19,74 @@ skins = {
   }
 }
 
-city_names = ['Aspen', 'Boulder', 'Colorado Springs', 'Denver']
-
+Site = ['ADM', 'TECH', 'ZEB', 'BME', 'CAN/JH', 'CME', 'GCE', 'HS', 'PVE', 'SKY']
 
 #this is going to be hidden but visible in text file
 distances = {
-    ('Aspen', 'Boulder'): 210,
-    ('Aspen', 'Colorado Springs'): 265,
-    ('Aspen', 'Denver'): 198,
-    ('Boulder', 'Colorado Springs'): 103,
-    ('Boulder', 'Denver'): 30,
-    ('Colorado Springs', 'Denver'): 69,
+#ADM > TECH = 2.5
+    ('ADM', 'TECH'): 2,
+    ('ADM', 'ZEB'): 3,
+    ('ADM', 'BME'): 2,
+    ('ADM', 'CAN/JH'): 1,
+    ('ADM', 'CME'): 7,
+    ('ADM', 'HS'): 1,
+    ('ADM', 'PVE'): 7,
+    ('ADM', 'SKY'): 1,
+    ('TECH', 'ZEB'): 1,
+    ('TECH', "BME"): 4,
+    ('TECH', 'CAN/JH'): 3,
+    ('TECH', 'CME'): 7,
+    ('TECH', 'GCE'): 3,
+    #TECH > HS = 3.5
+    ('TECH', 'HS'): 3,
+    ('TECH', 'PVE'): 7,
+    ('TECH', 'SKY'): 2.5,
+    ('ZEB', 'BME'): 4,
+    ('ZEB', 'CAN/JH'): 3,
+    ('ZEB', 'CME'): 7,
+    ('ZEB', 'GCE'): 2,
+    ('ZEB', 'HS'): 2,
+    ('ZEB', 'PVE'): 7,
+    #ZEB > SKY = 2.5
+    ('ZEB', 'SKY'): 2,
+    ('BME', 'CAN/JH'): 2,
+    ('BME', 'CME'): 4,
+    ('BME', 'GCE'): 3,
+    #BME > HS = 2.5
+    ('BME', 'HS'): 2,
+    ('BME', 'PVE'): 4,
+    #BME > SKY = 2.5
+    ('BME', 'SKY'): 2,
+    ('CAN/JH', 'CME'): 5.5,
+    ('CAN/JH', 'GCE'): 1,
+    ('CAN/JH', 'HS'): 1,
+    #CAN/JH > PVE = 6.5
+    ('CAN/JH', 'PVE'): 5,
+    ('CAN/JH', 'SKY'): 1,
+    ('CME', 'GCE'): 7,
+    ('CME', 'HS'): 6,
+    # CME > HS = 6.5
+    ('CME', 'PVE'): 1,
+    # CME > SKY = 6.5
+    ('CME', 'SKY'): 6,
+    ('GCE', 'HS'): 1,
+    ('GCE', 'PVE'): 1,
+    ('GCE', 'SKY'): 1,
+    # HS > PVE = 6.5
+    ('HS', 'PVE'): 6,
+    ('HS', 'SKY'): 1,
+    #PVE > SKY = 6.5
+    ('PVE', 'SKY'): 6,
+
 }
-# Reverse the permutations (Myko look at this math, ensures you only need to enter school list once ie "one axis of the train timetable")
+
 for (a, b), d in list(distances.items()):
     distances[(b, a)] = d
 
-class CityLogger:
+class SiteTracking:
     def __init__(self, master): 
         self.master = master
-        self.master.title("City Travel Logger Entertainment System")
+        self.master.title("Site 2 Site Tracking - Test")
 
         self.log = []
         self.is_logging = False
@@ -47,7 +95,7 @@ class CityLogger:
         self.city_buttons = [] #Create list to store city buttons
 
         # Creates city buttons 
-        for city in city_names:
+        for city in Site:
             btn = tk.Button(master, text=city, width=20,
                             command=lambda c=city: self.city_click(c))
             btn.pack(pady=5)
@@ -110,11 +158,11 @@ class CityLogger:
             for entry in self.log:
                 f.write(f"{entry}\n")
             f.write(f"\nTotal miles traveled: {self.total_miles} mi\n")
-        self.log_message(f"Your CityLog has been saved to {filename}")
+        self.log_message(f"Your Mileage has been saved to {filename}")
     
     def city_click(self, key):
         if not self.is_logging:
-            self.log_message("Click Start to begin your CityLog")
+            self.log_message("Click Start to begin tracking.")
             return
         
         if self.last_city is None:
@@ -134,7 +182,7 @@ class CityLogger:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = CityLogger(root)
+    app = SiteTracking(root)
     root.mainloop()
 
             
